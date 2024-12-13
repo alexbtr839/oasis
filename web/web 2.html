@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oasis Shisha</title>
+    <style>
+        @font-face {
+            font-family: 'Castellar';
+            src: url('Castellar.ttf'); /* Si tienes la fuente localmente, incluye la ruta al archivo .ttf */
+        }
+
+        body {
+            font-family: 'Castellar', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a1a;
+            color: #fff;
+            background-image: url('oasis.jpg'); /* Imagen de fondo oasis */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            transition: background-color 0.5s ease;
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 100px 0;
+            text-align: center;
+            animation: fadeIn 1s ease-out;
+        }
+
+        header .logo h1 {
+            margin: 0;
+            font-size: 3em;
+            color: #00bfff; /* Azul oasis */
+            text-shadow: 0 0 0.2px #00bfff, 0 0 0.5px #00bfff;
+            font-weight: normal;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #FFD700; /* Amarillo dorado para las subletras */
+            font-size: 1.5em;
+            text-shadow: 0 0 0.2px #FFD700, 0 0 0.5px #FFD700;
+            font-weight: normal;
+            transition: transform 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #ff3333;
+            transform: scale(1.2) rotate(10deg);
+            box-shadow: 0 0 15px #00bfff;
+        }
+
+        section {
+            padding: 20px;
+            margin: 10px;
+            border: 2px solid #444;
+            border-radius: 8px;
+            background-color: rgba(34, 34, 34, 0.8);
+            display: none;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        section.active {
+            display: block;
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        section h2 {
+            font-size: 2.5em;
+            color: #FFD700; /* Amarillo dorado para el título */
+            text-shadow: 0 0 0.2px #FFD700, 0 0 0.5px #FFD700;
+            font-weight: normal;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #FFD700; /* Amarillo dorado para el pie de página */
+            font-size: 1.2em;
+            text-shadow: 0 0 0.2px #FFD700, 0 0 0.5px #FFD700;
+            font-weight: normal;
+        }
+
+        /* Cambio color de las letras blancas a beige suave */
+        p, li, .producto h3 {
+            color: #D2B48C; /* Beige suave para las subletras */
+            font-weight: normal;
+            text-shadow: none;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <h1>Oasis Shisha</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="showSection('cachimbas')">Cachimbas</a></li>
+                <li><a href="#" onclick="showSection('carta')">Carta</a></li>
+                <li><a href="#" onclick="showSection('reservar')">Reservar mesa</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="cachimbas">
+        <h2>Cachimbas</h2>
+        <div class="producto">
+            <h3>Cachimba Estándar</h3>
+            <p>Precio: 10€</p>
+            <p>Sabores disponibles: Uva, Menta, Fresa</p>
+            <p><strong>Opciones adicionales:</strong> Fusión de sabores +3€, Premium +5€, Mezcla de la casa +4€</p>
+        </div>
+        <div class="producto">
+            <h3>Cachimba Premium</h3>
+            <p>Precio: 20€</p>
+            <p>Sabores disponibles: Mango, Limón, Piña</p>
+            <p><strong>Opciones adicionales:</strong> Fusión de sabores +3€, Mezcla de la casa +4€</p>
+        </div>
+    </section>
+
+    <section id="carta">
+        <h2>Carta</h2>
+        <div class="categoria">
+            <h3>Bebidas</h3>
+            <ul>
+                <li>Refrescos clásicos</li>
+                <li>Alcohol</li>
+                <li>Cócteles especiales</li>
+            </ul>
+        </div>
+        <div class="categoria">
+            <h3>Comida</h3>
+            <ul>
+                <li>Bocadillos variados</li>
+                <li>Palomitas</li>
+                <li>Gominolas</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="reservar">
+        <h2>Reservar mesa</h2>
+        <p>Para reservar, llámanos al: <strong>+34 123 456 789</strong></p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Oasis Shisha</p>
+    </footer>
+
+    <script>
+        function showSection(sectionId) {
+            // Ocultar todas las secciones
+            var sections = document.querySelectorAll('section');
+            sections.forEach(function(section) {
+                section.classList.remove('active');
+            });
+
+            // Mostrar la sección seleccionada con efecto de deslizamiento y desvanecimiento
+            var activeSection = document.getElementById(sectionId);
+            activeSection.classList.add('active');
+        }
+    </script>
+
+</body>
+</html>
+
+
+
